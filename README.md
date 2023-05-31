@@ -1,4 +1,4 @@
-# yelp_v2_pern_stack
+# management_system_v2
 
 To set up in your local machine
 
