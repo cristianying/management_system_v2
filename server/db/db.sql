@@ -42,6 +42,25 @@ CREATE TABLE clients (
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
+CREATE TABLE client_orders (
+    order_id uuid DEFAULT
+    uuid_generate_v4(),
+    client_id UUID,
+    created_at timestamp NOT NULL,
+    updated_at timestamp NOT NULL,
+    status_id INT NOT NULL check(status_id >=1 and status_id <=5),
+    status_name VARCHAR(255) NOT NULL,
+    PRIMARY KEY (order_id),
+    FOREIGN KEY (client_id) REFERENCES clients(client_id)
+);
+-- status_name, status_id
+-- created 1
+-- paid 2
+-- dispatched 3
+-- delivered 4
+-- cancelled 5
+
+
 
 --create extension if not exists "uuid-ossp"; (need this in order for postgre to run the function uuid, just paste it in the database from the terminal)
 

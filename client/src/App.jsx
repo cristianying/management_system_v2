@@ -4,15 +4,17 @@ import { RestaurantsContextProvider } from './context/RestaurantsContext';
 import Home from './routes/Home';
 import Login from './routes/Login';
 import RestaurantdetailPage from './routes/RestaurantdetailPage';
-import UpdatePage from './routes/UpdatePage';
+import UpdateRestaurant from './routes/UpdateRestaurant';
 import Register from "./routes/Register";
 // import { toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
 import RestaurantFinder from './apis/RestaurantFinder'
 import ClientPage from './routes/ClientPage';
+import UpdateClient from './routes/UpdateClient'
 // toast.configure();
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import './style.css';
+import OrderPage from './routes/OrderPage';
 
 const App = () => {
     // return (
@@ -89,8 +91,10 @@ if(mounted){
                     <Route path="/register" element={<Register setAuth={setAuth}/>}/>
                     <Route path="/" element={!isAuthenticated ? <Navigate to="/login" /> : <Home setAuth={setAuth}/>}/>
                     <Route path="/restaurants/:id" element={!isAuthenticated ? <Navigate to="/login" /> : <RestaurantdetailPage setAuth={setAuth}/>}/>
-                    <Route path="/restaurants/:id/update" element={!isAuthenticated ? <Navigate to="/login" /> : <UpdatePage setAuth={setAuth}/>}/>
+                    <Route path="/restaurants/:id/update" element={!isAuthenticated ? <Navigate to="/login" /> : <UpdateRestaurant setAuth={setAuth}/>}/>
                     <Route path="/clients" element={!isAuthenticated ? <Navigate to="/login" /> : <ClientPage setAuth={setAuth}/>}/>
+                    <Route path="/clients/:id/update" element={!isAuthenticated ? <Navigate to="/login" /> : <UpdateClient setAuth={setAuth}/>}/>
+                    <Route path="/client_orders" element={!isAuthenticated ? <Navigate to="/login" /> : <OrderPage setAuth={setAuth}/>}/>
             </Routes>
         </Router>
     

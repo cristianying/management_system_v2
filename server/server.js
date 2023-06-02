@@ -17,8 +17,12 @@ app.use("/auth", require("./routes/jwtAuth"));
 // restaurants routes
 app.use("/api/v1/restaurants", require("./routes/restaurants"));
 
-// restaurants routes
+// clients routes
 app.use("/api/v1/clients", require("./routes/clients"));
+
+
+// orders routes
+app.use("/api/v1/client_orders", require("./routes/client_orders"));
 
 
 const port = process.env.PORT || 3000;

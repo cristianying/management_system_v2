@@ -27,9 +27,9 @@ const NavBar = () => {
             <span className="link-text">Clients</span>
             </a>
         </li>
-{/* 
+
         <li className="nav-item">
-            <a href="#" className="nav-link">
+            <a href="/client_orders" className="nav-link">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                 <path
                     fill="currentColor"
@@ -38,7 +38,7 @@ const NavBar = () => {
             </a>
         </li>
 
-        <li className="nav-item">
+        {/* <li className="nav-item">
             <a href="#" className="nav-link">
             <svg
                 aria-hidden="true"

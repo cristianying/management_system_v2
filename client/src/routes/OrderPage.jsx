@@ -1,27 +1,26 @@
-import React, { useContext, useEffect } from 'react'
-import { RestaurantsContext } from '../context/RestaurantsContext';
+import React, { useEffect, useState } from 'react'
 import RestaurantFinder from "../apis/RestaurantFinder"
 import AddClient from '../Components/AddClient'
-import ClientList from '../Components/ClientList'
+import ClientOrdersList from '../Components/ClientOrdersList'
 import NavBar from '../Components/NavBar';
 
 
-const ClientPage = () => {
+const OrderPage = () => {
 
-    const {setClients} = useContext(RestaurantsContext);
+    const [ClientOrders, setClientOrders] = useState("");
 
     useEffect(()=>{
         const fetchData = async ()=> {
         
             try {
-                const responce = await RestaurantFinder.get("/api/v1/clients", {
+                const responce = await RestaurantFinder.get("/api/v1/client_orders", {
                 
                     headers: {token: localStorage.token}
                });
     
                console.log("new json: " ,responce.data.data )
-               if(responce.data.data.client[0].client_id !== null){
-                setClients(responce.data.data.client);
+               if(responce.data.data.order[0].order_id !== null){
+                setClientOrders(responce.data.data.order);
                }
                 
                 // console.log("first value",responce.data.data.restaurant);
@@ -31,7 +30,7 @@ const ClientPage = () => {
         }
   
         fetchData()
-    },[setClients])
+    },[setClientOrders])
 
 
   return (
@@ -39,13 +38,13 @@ const ClientPage = () => {
         <NavBar/>
         <div className='main'>
             <h1 className='font-weight-light display-4 text-center'>
-                Clients
+                Client Orders
             </h1>
             <AddClient/>
-            <ClientList/>
+            <ClientOrdersList ClientOrders={ClientOrders}/>
         </div>
     </div>
   )
 }
 
-export default ClientPage
+export default OrderPage

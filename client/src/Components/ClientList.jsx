@@ -1,11 +1,11 @@
 import React, { useContext, useEffect } from "react";
 import RestaurantFinder from "../apis/RestaurantFinder";
 import { RestaurantsContext } from "../context/RestaurantsContext";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ClientList = () => {
   const {clients, setClients } = useContext(RestaurantsContext);
-  // let navigate = useNavigate()
+  let navigate = useNavigate()
 
 
   useEffect(() => {
@@ -32,10 +32,11 @@ const ClientList = () => {
   //   }
   // };
 
-  // const handleUpdate = async (e, id) => {
-  //   e.stopPropagation()
-  //   navigate(`/restaurants/${id}/update`)
-  // };
+  const handleUpdate = async (e, id) => {
+    e.stopPropagation()
+    navigate(`/clients/${id}/update`)
+    console.log(id)
+  };
 
   // const handleRestaurantSelect = async (id) => {
   //   // console.log('sent id ', restaurants)
@@ -53,6 +54,7 @@ const ClientList = () => {
             <th scope="col">Address</th>
             <th scope="col">Country</th>
             <th scope="col">Note</th>
+            <th scope="col">Edit</th>
           </tr>
         </thead>
         <tbody>
@@ -67,6 +69,13 @@ const ClientList = () => {
                   <td>{client.address}</td>
                   <td>{client.country}</td>
                   <td>{client.note}</td>
+                  <td>
+                    <button 
+                    onClick={(e) =>handleUpdate(e, client.client_id)}
+                    className="btn btn-warning">
+                      Update
+                    </button>
+                  </td>
                 </tr>
 
               );
