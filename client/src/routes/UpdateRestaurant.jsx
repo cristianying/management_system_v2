@@ -34,7 +34,8 @@ const UpdateRestaurant = (props) => {
   };
 
   return (
-    <div>
+    <div className='container'>
+      <h1 className="text-center">Update Restaurant</h1>
       <form action="">
         <div className="form-group">
           <label htmlFor="name">Name</label>

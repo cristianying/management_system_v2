@@ -6,43 +6,10 @@ import RestaurantFinder from "../apis/RestaurantFinder"
 import NavBar from '../Components/NavBar'
 
 
-const Home = ({setAuth}) => {
+const Home = () => {
 
   const [setName]=useState("");
   const {restaurants,setRestaurants} = useContext(RestaurantsContext);
-
-  // const getName = async () =>{
-  //     try {
-  //         const res = await fetch("http://localhost:4001/dashboard",{
-  //             method: "GET",
-  //             headers: {token: localStorage.token}
-
-  //         });
-
-  //         const parseRes = await res.json();
-  //         console.log(parseRes);
-
-  //         setName(parseRes.user_name);
-  //     } catch (err) {
-  //         console.error(err.message);
-  //     }
-  // }
-  
-
-
-
-  const logout = (e) => {
-      e.preventDefault()
-
-      try {
-          localStorage.removeItem("token");
-          setAuth(false);
-          setRestaurants([]);
-          // toast.success("Logout successfully");
-        } catch (err) {
-          console.error(err.message);
-        }
-  }
   
   useEffect(()=>{
       const fetchData = async ()=> {
@@ -81,17 +48,9 @@ const Home = ({setAuth}) => {
             </h1>
             <AddRestaurant/>
             <RestaurantList restaurants={restaurants}/>
-            <button className="btn btn-primary" onClick={e=>logout(e)}>Logout</button>
           </div>
       </div>
   )
-//   return (
-//     <div>
-//         <Header/>
-//         <AddRestaurant/>
-//         <RestaurantList/>
-//     </div>
-//   )
 }
 
 export default Home

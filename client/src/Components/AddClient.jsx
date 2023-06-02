@@ -37,8 +37,8 @@ const AddClient = () => {
   return (
     <div className="mb-4">
       <form action="">
-        <div className="form-column container col-5">
-          <div className="col input-group mb-4">
+        <div className="form-row">
+          <div className="col-4 input-group mb-4">
             <span className="input-group-text">
               <i className="bi bi-person"></i>
             </span>
@@ -50,7 +50,7 @@ const AddClient = () => {
               placeholder="name"
             />
           </div>
-          <div className="col input-group mb-4">
+          <div className="col-4 input-group mb-4">
             <span className="input-group-text">
               <i className="bi bi-envelope-at"></i>
             </span>
@@ -62,7 +62,7 @@ const AddClient = () => {
               placeholder="email"
             />
           </div>
-          <div className="col input-group mb-4">
+          <div className="col-4 input-group mb-4">
             <span className="input-group-text">
               <i className="bi bi-phone"></i>
             </span>
@@ -74,7 +74,7 @@ const AddClient = () => {
               placeholder="telephone"
             />
           </div>
-          <div className="col input-group mb-4">
+          <div className="col-4 input-group mb-4">
             <span className="input-group-text">
               <i className="bi bi-signpost"></i>
             </span>
@@ -86,7 +86,7 @@ const AddClient = () => {
               placeholder="address"
             />
           </div>
-          <div className="col input-group mb-4">
+          <div className="col-4 input-group mb-4">
             <span className="input-group-text">
               <i className="bi bi-globe-americas"></i>
             </span>
@@ -98,7 +98,7 @@ const AddClient = () => {
               placeholder="country"
             />
           </div>
-          <div className="col mb-4">
+          <div className="col-5 mb-4">
             <textarea
               value={note}
               onChange={(e) => setNote(e.target.value)}
@@ -108,15 +108,17 @@ const AddClient = () => {
               style={{ height: 100 }}
             ></textarea>
           </div>
-          <div className="col text-center">
+          <div className="col-5 ml-3">
             <button
               onClick={handleSubmit}
               type="submit"
-              className="h-10 px-5 text-indigo-700 transition-colors duration-150 border border-indigo-500 rounded-lg focus:shadow-outline hover:bg-indigo-500 hover:text-indigo-100"
+              className="btn btn-primary"
+              style={{ width: 100 }}
             >
               Add
             </button>
           </div>
+
         </div>
       </form>
     </div>
