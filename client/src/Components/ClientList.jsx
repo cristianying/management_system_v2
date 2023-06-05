@@ -1,23 +1,21 @@
-import React, { useContext, useEffect } from "react";
-import RestaurantFinder from "../apis/RestaurantFinder";
-import { RestaurantsContext } from "../context/RestaurantsContext";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const ClientList = () => {
-  const {clients, setClients } = useContext(RestaurantsContext);
+const ClientList = ({clients}) => {
+  // const {clients, setClients } = useContext(RestaurantsContext);
   let navigate = useNavigate()
 
 
-  useEffect(() => {
-    const fetchData = async () => {
-        try {
-          const response = await RestaurantFinder.get("/api/v1/clients/");
-          console.log(response.data.data);
-          setClients(response.data.data.client);
-        } catch (err) {}
-      };
-    fetchData();
-  }, [setClients]);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //       try {
+  //         const response = await RestaurantFinder.get("/api/v1/clients/");
+  //         console.log(response.data.data);
+  //         setClients(response.data.data.client);
+  //       } catch (err) {}
+  //     };
+  //   fetchData();
+  // }, [setClients]);
 
   // const handleDelete = async (e, id) => {
   //   e.stopPropagation()

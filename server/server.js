@@ -24,6 +24,9 @@ app.use("/api/v1/clients", require("./routes/clients"));
 // orders routes
 app.use("/api/v1/client_orders", require("./routes/client_orders"));
 
+// products routes
+app.use("/api/v1/products", require("./routes/products"));
+
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

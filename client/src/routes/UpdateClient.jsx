@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import RestaurantFinder from "../apis/RestaurantFinder";
+import NavBar from "../Components/NavBar";
 
 const UpdateRestaurant = () => {
   const { id } = useParams();
@@ -43,7 +44,9 @@ const UpdateRestaurant = () => {
   };
 
   return (
-    <div className='container'>
+    <>
+    <NavBar/>
+    <div className='main'>
       <h1 className="text-center">Update Client</h1>
       <form action="">
         <div className="form-group">
@@ -116,6 +119,7 @@ const UpdateRestaurant = () => {
         </button>
       </form>
     </div>
+    </>
   );
 };
 

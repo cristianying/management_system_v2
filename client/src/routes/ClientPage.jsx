@@ -6,9 +6,9 @@ import ClientList from '../Components/ClientList'
 import NavBar from '../Components/NavBar';
 
 
-const ClientPage = () => {
+const ClientPage = ({setAuth}) => {
 
-    const {setClients} = useContext(RestaurantsContext);
+    const {clients, setClients} = useContext(RestaurantsContext);
 
     useEffect(()=>{
         const fetchData = async ()=> {
@@ -19,30 +19,34 @@ const ClientPage = () => {
                     headers: {token: localStorage.token}
                });
     
-               console.log("new json: " ,responce.data.data )
+            //    console.log("new json: " ,responce.data.data )
                if(responce.data.data.client[0].client_id !== null){
                 setClients(responce.data.data.client);
                }
                 
                 // console.log("first value",responce.data.data.restaurant);
             } catch (err) {
-                // console.log(err);
+                localStorage.removeItem("token");
+                setAuth(false);
+                setClients([]);
+                console.log("its me mario",err);
+
             }
         }
   
         fetchData()
-    },[setClients])
+    },[setClients, setAuth])
 
 
   return (
     <div>
-        <NavBar/>
+        <NavBar/>    
         <div className='main'>
             <h1 className='font-weight-light display-4 text-center'>
                 Clients
             </h1>
             <AddClient/>
-            <ClientList/>
+            <ClientList clients={clients}/>
         </div>
     </div>
   )

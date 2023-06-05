@@ -15,23 +15,9 @@ import UpdateClient from './routes/UpdateClient'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import './style.css';
 import OrderPage from './routes/OrderPage';
+import ProductPage from './routes/ProductPage';
 
 const App = () => {
-    // return (
-    // <RestaurantsContextProvider>
-    //     <div className='container'>
-    //         <Router>
-    //             <Routes>
-    //                 <Route exact path = "/" Component={Home}/>
-    //                 <Route exact path = "/restaurants/:id" Component={RestaurantdetailPage}/>
-    //                 <Route exact path = "/restaurants/:id/update" Component={UpdatePage}/>
-    //                 <Route exact path = "/login" Component={Login}/>
-    //                 <Route exact path = "/register" Component={Register}/>
-    //             </Routes>
-    //         </Router>
-    //     </div>
-    // </RestaurantsContextProvider>
-    // )
 
     const [mounted, setMounted] = useState(false)
     const [isAuthenticated, setIsAuthenticated]=useState(false);
@@ -51,8 +37,7 @@ const App = () => {
 
             const parseRes = await res.data;
 
-            parseRes === true ? setIsAuthenticated(true):
-            setIsAuthenticated(false);
+            parseRes === true ? setIsAuthenticated(true):setIsAuthenticated(false);
             
         }
         setMounted(true)
@@ -61,11 +46,6 @@ const App = () => {
             localStorage.removeItem("token");
         }
     }
-
-// if(!mounted){
-//     //console.log("!mounted")
-//     isAuth();
-// }
 
 useEffect(() => {
 
@@ -83,7 +63,6 @@ if(mounted){
     return( 
    
     <RestaurantsContextProvider>
-
     
         <Router>
             <Routes>
@@ -95,6 +74,7 @@ if(mounted){
                     <Route path="/clients" element={!isAuthenticated ? <Navigate to="/login" /> : <ClientPage setAuth={setAuth}/>}/>
                     <Route path="/clients/:id/update" element={!isAuthenticated ? <Navigate to="/login" /> : <UpdateClient setAuth={setAuth}/>}/>
                     <Route path="/client_orders" element={!isAuthenticated ? <Navigate to="/login" /> : <OrderPage setAuth={setAuth}/>}/>
+                    <Route path="/products" element={!isAuthenticated ? <Navigate to="/login" /> : <ProductPage setAuth={setAuth}/>}/>
             </Routes>
         </Router>
     

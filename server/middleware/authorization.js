@@ -10,7 +10,7 @@ module.exports = async (req,res,next) =>{
         
 
         if (!jwtToken){
-            return res.status(403).json("not authorized");
+            return res.status(403).json(false);
         }
         
         const payload= jwt.verify(jwtToken, process.env.jwtSecret);
@@ -24,7 +24,7 @@ module.exports = async (req,res,next) =>{
 
     } catch (error) {
         console.log(error)
-        return res.status(403).json("Not Authorized");
+        return res.status(403).json(false);
     }
 
 

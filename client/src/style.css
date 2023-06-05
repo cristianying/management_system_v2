@@ -75,3 +75,9 @@ body{
 /* .navbar:hover .link-text {
     display: block;
 } */
+
+.table-input {
+    background-color: transparent;
+    border-color: transparent;
+    color: white;
+}

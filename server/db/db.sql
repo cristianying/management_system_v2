@@ -43,16 +43,19 @@ CREATE TABLE clients (
 );
 
 CREATE TABLE client_orders (
-    order_id uuid DEFAULT
-    uuid_generate_v4(),
+    order_id SERIAL,
+    user_id UUID,
     client_id UUID,
     created_at timestamp NOT NULL,
     updated_at timestamp NOT NULL,
     status_id INT NOT NULL check(status_id >=1 and status_id <=5),
     status_name VARCHAR(255) NOT NULL,
     PRIMARY KEY (order_id),
-    FOREIGN KEY (client_id) REFERENCES clients(client_id)
+    FOREIGN KEY (client_id) REFERENCES clients(client_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+ALTER SEQUENCE client_orders_order_id_seq RESTART WITH 100;
+
 -- status_name, status_id
 -- created 1
 -- paid 2
@@ -60,7 +63,35 @@ CREATE TABLE client_orders (
 -- delivered 4
 -- cancelled 5
 
+CREATE TABLE products (
+    product_id SERIAL,
+    user_id UUID,
+    product_reference_id VARCHAR(255) NOT NULL,
+    product_name VARCHAR(255) NOT NULL,
+    type_id INT NOT NULL,
+    sub_type_id INT NOT NULL, 
+    factory_id INT NOT NULL,
+    unit_cost DECIMAL(32,4),
+    photos bytea,
+    current_box_quantity INT,
+    pack_per_box INT,
+    pieces_per_pack INT,
+    created_at timestamp NOT NULL,
+    updated_at timestamp NOT NULL,
+    PRIMARY KEY (product_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
 
+CREATE TABLE client_order_details (
+    order_detail_id SERIAL,
+    order_id INT NOT NULL,
+    product_id INT NOT NULL,
+    box_quantity INT NOT NULL,
+    piece_sell_price DECIMAL(32,4),
+    PRIMARY KEY (order_detail_id),
+    FOREIGN KEY (order_id) REFERENCES client_orders(order_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
 
 --create extension if not exists "uuid-ossp"; (need this in order for postgre to run the function uuid, just paste it in the database from the terminal)
 
