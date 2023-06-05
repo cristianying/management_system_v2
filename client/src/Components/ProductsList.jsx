@@ -1,7 +1,7 @@
 import React from "react";
 // import { useNavigate } from "react-router-dom";
 
-const ClientList = ({clientOrders}) => {
+const ProductsList = ({products}) => {
   // const {clients, setClients } = useContext(RestaurantsContext);
   // let navigate = useNavigate()
 
@@ -48,24 +48,36 @@ const ClientList = ({clientOrders}) => {
       <table className="table table-hover table-dark">
         <thead>
           <tr className="bg-primary">
-            <th scope="col">order ID</th>
-            <th scope="col">client name</th>
-            <th scope="col">created at</th>
-            <th scope="col">updated at</th>
-            <th scope="col">status name</th>
+            <th scope="col">Product Reference ID</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Type ID</th>
+            <th scope="col">Sub Type ID</th>
+            <th scope="col">Factory ID</th>
+            <th scope="col">Unit Cost</th>
+            <th scope="col">Current Box Quantity</th>
+            <th scope="col">Pack Per Box</th>
+            <th scope="col">Pieces Per Pack</th>
+            <th scope="col">Created At</th>
+            <th scope="col">Updated At</th>
           </tr>
         </thead>
         <tbody>
           {/* restaurants && check if restaurants exist, then run code */}
-          {clientOrders &&
-            clientOrders.map((orders) => {
+          {products &&
+            products.map((product) => {
               return (
-                <tr key={orders.order_id }> 
-                  <td>{orders.order_id}</td>
-                  <td>{orders.client_name}</td>
-                  <td>{orders.created_at}</td>
-                  <td>{orders.updated_at}</td>
-                  <td>{orders.status_name}</td>
+                <tr key={product.product_id }> 
+                  <td>{product.product_reference_id}</td>
+                  <td>{product.product_name}</td>
+                  <td>{product.type_id}</td>
+                  <td>{product.sub_type_id}</td>
+                  <td>{product.factory_id}</td>
+                  <td>{product.unit_cost}</td>
+                  <td>{product.current_box_quantity}</td>
+                  <td>{product.pack_per_box}</td>
+                  <td>{product.pieces_per_pack}</td>
+                  <td>{product.created_at}</td>
+                  <td>{product.updated_at}</td>
                   {/* <td>
                     <button 
                     onClick={(e) =>handleUpdate(e, client.client_id)}
@@ -83,4 +95,4 @@ const ClientList = ({clientOrders}) => {
   );
 };
 
-export default ClientList;
+export default ProductsList;

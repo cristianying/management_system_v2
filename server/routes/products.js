@@ -7,14 +7,14 @@ let current_date = new Date();
 router.get("/", authorization, async (req, res) => {
     try {
     
-      const orders = await db.query("select o.*, c.name as client_name from client_orders o left join clients c on c.client_id = o.client_id where c.user_id=$1;",
+      const products = await db.query("select * from products where user_id=$1;",
       [req.user.id]);
   
       // console.log(restaurant.rows[0]);
       res.status(200).json({
         status: "Success",
         data: {
-          orders: orders.rows
+          products: products.rows
         },
       });
     } catch (err) {
@@ -46,25 +46,25 @@ router.get("/", authorization, async (req, res) => {
 //     });
 
 // create a client order
-router.post("/", authorization, async (req, res) => {
-    try {
-    // sql injections protection
-    const results = await db.query(
-        "INSERT INTO client_orders (user_id, client_id, created_at, updated_at, status_id, status_name ) VALUES ($1, $2, $3, $4, $5, $6) returning *",
-        [req.user.id, req.body.clientId, current_date, current_date, '1', 'created']
-    );
+// router.post("/", authorization, async (req, res) => {
+//     try {
+//     // sql injections protection
+//     const results = await db.query(
+//         "INSERT INTO client_orders (user_id, client_id, created_at, updated_at, status_id, status_name ) VALUES ($1, $2, $3, $4, $5, $6) returning *",
+//         [req.user.id, req.body.clientId, current_date, current_date, '1', 'created']
+//     );
 
-    // console.log(results.rows[0]);
-    res.status(200).json({
-        status: "Success",
-        data: {
-        client_order: results.rows[0],
-        },
-    });
-    } catch (err) {
-    console.log(err);
-    }
-});
+//     // console.log(results.rows[0]);
+//     res.status(200).json({
+//         status: "Success",
+//         data: {
+//         client_order: results.rows[0],
+//         },
+//     });
+//     } catch (err) {
+//     console.log(err);
+//     }
+// });
 
 //   // update client
 //   router.put("/:id", async (req, res) => {

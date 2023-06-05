@@ -1,21 +1,19 @@
 import React, { useContext, useEffect } from 'react'
 import RestaurantFinder from "../apis/RestaurantFinder"
-import AddOrder from '../Components/AddOrder';
-import ClientOrdersList from '../Components/ClientOrdersList'
 import NavBar from '../Components/NavBar';
+import ProductsList from '../Components/ProductsList';
 import { RestaurantsContext } from '../context/RestaurantsContext';
 
 
-const OrderPage = ({setAuth}) => {
+const ProductPage = ({setAuth}) => {
 
-    const {clientOrders, setClientOrders} = useContext(RestaurantsContext);
-    const {clients} = useContext(RestaurantsContext);
+    const {products, setProducts} = useContext(RestaurantsContext);
 
     useEffect(()=>{
         const fetchData = async ()=> {
         
             try {
-                const responce = await RestaurantFinder.get("/api/v1/client_orders", {
+                const responce = await RestaurantFinder.get("/api/v1/products", {
                 
                     headers: {token: localStorage.token}
                });
@@ -23,36 +21,36 @@ const OrderPage = ({setAuth}) => {
                
             //    console.log("new json: " ,responce.data.data.orders.length !== 0 )
 
-               if(responce.data.data.orders.length !== 0){
+               if(responce.data.data.products.length !== 0){
 
-                setClientOrders(responce.data.data.orders);
+                setProducts(responce.data.data.products);
                };
             //    console.log("first value orders ", clientOrders);
                 
             } catch (err) {
                 localStorage.removeItem("token");
                 setAuth(false);
-                setClientOrders([]);
+                setProducts([]);
                 console.log(err);
             }
         }
   
         fetchData()
-    },[setClientOrders, setAuth])
+    },[setProducts, setAuth])
 
 
   return (
     <div>
+
         <NavBar/>    
         <div className='main'>
             <h1 className='font-weight-light display-4 text-center'>
-                Client Orders
+                Products
             </h1>
-            <AddOrder clients = {clients}/>
-            <ClientOrdersList clientOrders={clientOrders}/>
+            <ProductsList products={products}/>
         </div>
     </div>
   )
 }
 
-export default OrderPage
+export default ProductPage

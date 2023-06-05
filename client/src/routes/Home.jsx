@@ -40,8 +40,8 @@ const Home = () => {
   
   return (
       <div>
+        <NavBar/>    
           {/* <h1>Welcome {name}</h1> */}
-          <NavBar/>
           <div className='main'>
             <h1 className='font-weight-light display-4 text-center'>
                 Restaurant Finder
