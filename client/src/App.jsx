@@ -16,6 +16,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 import './style.css';
 import OrderPage from './routes/OrderPage';
 import ProductPage from './routes/ProductPage';
+import OrderDetailPage from './routes/OrderDetailPage';
 
 const App = () => {
 
@@ -74,6 +75,7 @@ if(mounted){
                     <Route path="/clients" element={!isAuthenticated ? <Navigate to="/login" /> : <ClientPage setAuth={setAuth}/>}/>
                     <Route path="/clients/:id/update" element={!isAuthenticated ? <Navigate to="/login" /> : <UpdateClient setAuth={setAuth}/>}/>
                     <Route path="/client_orders" element={!isAuthenticated ? <Navigate to="/login" /> : <OrderPage setAuth={setAuth}/>}/>
+                    <Route path="/client_orders/:id" element={!isAuthenticated ? <Navigate to="/login" /> : <OrderDetailPage setAuth={setAuth}/>}/>
                     <Route path="/products" element={!isAuthenticated ? <Navigate to="/login" /> : <ProductPage setAuth={setAuth}/>}/>
             </Routes>
         </Router>

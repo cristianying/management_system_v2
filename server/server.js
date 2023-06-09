@@ -24,6 +24,9 @@ app.use("/api/v1/clients", require("./routes/clients"));
 // orders routes
 app.use("/api/v1/client_orders", require("./routes/client_orders"));
 
+// order details routes
+app.use("/api/v1/client_order_details", require("./routes/client_order_details"));
+
 // products routes
 app.use("/api/v1/products", require("./routes/products"));
 

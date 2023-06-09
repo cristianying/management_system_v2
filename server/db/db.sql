@@ -84,13 +84,15 @@ CREATE TABLE products (
 
 CREATE TABLE client_order_details (
     order_detail_id SERIAL,
+    user_id UUID,
     order_id INT NOT NULL,
     product_id INT NOT NULL,
     box_quantity INT NOT NULL,
     piece_sell_price DECIMAL(32,4),
     PRIMARY KEY (order_detail_id),
     FOREIGN KEY (order_id) REFERENCES client_orders(order_id),
-    FOREIGN KEY (product_id) REFERENCES products(product_id)
+    FOREIGN KEY (product_id) REFERENCES products(product_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
 --create extension if not exists "uuid-ossp"; (need this in order for postgre to run the function uuid, just paste it in the database from the terminal)

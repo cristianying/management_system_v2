@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import RestaurantFinder from "../apis/RestaurantFinder"
+import AddProduct from '../Components/AddProduct';
 import NavBar from '../Components/NavBar';
 import ProductsList from '../Components/ProductsList';
 import { RestaurantsContext } from '../context/RestaurantsContext';
@@ -47,6 +48,7 @@ const ProductPage = ({setAuth}) => {
             <h1 className='font-weight-light display-4 text-center'>
                 Products
             </h1>
+            <AddProduct/>
             <ProductsList products={products}/>
         </div>
     </div>
