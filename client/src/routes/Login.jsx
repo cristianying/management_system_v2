@@ -52,7 +52,7 @@ const Login = ({setAuth}) => {
                 setAuth(true);
 
                 // toast.success("logged in successfully!")
-                console.log("logged in!!", res.data.token)
+                // console.log("logged in!!", res.data.token)
                 navigate("/");
             } else {
                 setAuth(false);

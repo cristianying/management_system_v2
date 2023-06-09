@@ -8,6 +8,7 @@ export const RestaurantsContextProvider = (props) => {
   const [clients,setClients] = useState([]);
   const [clientOrders, setClientOrders] = useState([]);
   const [products, setProducts] = useState([]);
+  const [orderProducts, setOrderProducts] = useState([]);
 
   const addRestaurants = (restaurant) => {
     setRestaurants([...restaurants, restaurant]);
@@ -37,7 +38,9 @@ export const RestaurantsContextProvider = (props) => {
         addClientOrders,
         setProducts,
         products,
-        addProducts
+        addProducts,
+        setOrderProducts,
+        orderProducts
       }}
     >
       {props.children}

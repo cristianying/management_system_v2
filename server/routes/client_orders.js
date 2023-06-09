@@ -23,27 +23,27 @@ router.get("/", authorization, async (req, res) => {
   });
 
 
-// // get a client
-// router.get("/:id", async (req, res) => {
-//     try {
-//         // sql injections protection
-//         // console.log(req.params.id);
-//         const results = await db.query(
-//         "select * from clients where client_id = $1;",
-//         [req.params.id]
-//         );
+// get an order
+router.get("/:id", async (req, res) => {
+    try {
+        // sql injections protection
+        // console.log(req.params.id);
+        const results = await db.query(
+        "select client_orders.*, clients.name from client_orders left join clients on clients.client_id = client_orders.client_id where order_id = $1;",
+        [req.params.id]
+        );
     
-//         // console.log(req.params.id);
-//         res.status(200).json({
-//         status: "Success",
-//         data: {
-//             client: results.rows[0],
-//         },
-//         });
-//     } catch (err) {
-//         console.log(err);
-//     }
-//     });
+        // console.log(req.params.id);
+        res.status(200).json({
+        status: "Success",
+        data: {
+            order: results.rows[0],
+        },
+        });
+    } catch (err) {
+        console.log(err);
+    }
+    });
 
 // create a client order
 router.post("/", authorization, async (req, res) => {
