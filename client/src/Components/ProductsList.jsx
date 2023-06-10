@@ -1,10 +1,9 @@
 import React from "react";
 // import { useNavigate } from "react-router-dom";
 
-const ProductsList = ({products}) => {
+const ProductsList = ({ products }) => {
   // const {clients, setClients } = useContext(RestaurantsContext);
   // let navigate = useNavigate()
-
 
   // useEffect(() => {
   //   const fetchData = async () => {
@@ -66,7 +65,7 @@ const ProductsList = ({products}) => {
           {products &&
             products.map((product) => {
               return (
-                <tr key={product.product_id }> 
+                <tr key={product.product_id}>
                   <td>{product.product_reference_id}</td>
                   <td>{product.product_name}</td>
                   <td>{product.type_id}</td>
@@ -86,7 +85,6 @@ const ProductsList = ({products}) => {
                     </button>
                   </td> */}
                 </tr>
-
               );
             })}
         </tbody>

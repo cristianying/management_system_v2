@@ -13,7 +13,7 @@ const AddProduct = () => {
   const [currentBoxQuantity, setCurrentBoxQuantity] = useState("");
   const [packPerBox, setPackPerBox] = useState("");
   const [piecesPerPack, setPiecesPerPack] = useState("");
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -28,7 +28,7 @@ const AddProduct = () => {
           unit_cost: unitCost,
           current_box_quantity: currentBoxQuantity,
           pack_per_box: packPerBox,
-          pieces_per_pack: piecesPerPack
+          pieces_per_pack: piecesPerPack,
         },
         {
           headers: { token: localStorage.token },
@@ -162,7 +162,6 @@ const AddProduct = () => {
               Add
             </button>
           </div>
-
         </div>
       </form>
     </div>

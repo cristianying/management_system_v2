@@ -4,8 +4,8 @@ import RestaurantFinder from "../apis/RestaurantFinder";
 
 const UpdateRestaurant = (props) => {
   const { id } = useParams();
-  let navigate = useNavigate()
-//   const { restaurants } = useContext(RestaurantsContext);
+  let navigate = useNavigate();
+  //   const { restaurants } = useContext(RestaurantsContext);
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [priceRange, setPriceRange] = useState("");
@@ -24,17 +24,20 @@ const UpdateRestaurant = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const updatedRestaurant = await RestaurantFinder.put(`/api/v1/restaurants/${id}`, {
-      name,
-      location,
-      price_range: priceRange,
-    });
+    const updatedRestaurant = await RestaurantFinder.put(
+      `/api/v1/restaurants/${id}`,
+      {
+        name,
+        location,
+        price_range: priceRange,
+      }
+    );
     console.log(updatedRestaurant.data.data);
     navigate("/");
   };
 
   return (
-    <div className='container'>
+    <div className="container">
       <h1 className="text-center">Update Restaurant</h1>
       <form action="">
         <div className="form-group">
