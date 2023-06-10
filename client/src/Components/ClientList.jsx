@@ -1,10 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const ClientList = ({clients}) => {
+const ClientList = ({ clients }) => {
   // const {clients, setClients } = useContext(RestaurantsContext);
-  let navigate = useNavigate()
-
+  let navigate = useNavigate();
 
   // useEffect(() => {
   //   const fetchData = async () => {
@@ -31,9 +30,9 @@ const ClientList = ({clients}) => {
   // };
 
   const handleUpdate = async (e, id) => {
-    e.stopPropagation()
-    navigate(`/clients/${id}/update`)
-    console.log(id)
+    e.stopPropagation();
+    navigate(`/clients/${id}/update`);
+    console.log(id);
   };
 
   // const handleRestaurantSelect = async (id) => {
@@ -60,7 +59,7 @@ const ClientList = ({clients}) => {
           {clients &&
             clients.map((client) => {
               return (
-                <tr key={client.client_id }> 
+                <tr key={client.client_id}>
                   <td>{client.name}</td>
                   <td>{client.email}</td>
                   <td>{client.telephone}</td>
@@ -68,14 +67,14 @@ const ClientList = ({clients}) => {
                   <td>{client.country}</td>
                   <td>{client.note}</td>
                   <td>
-                    <button 
-                    onClick={(e) =>handleUpdate(e, client.client_id)}
-                    className="btn btn-warning">
+                    <button
+                      onClick={(e) => handleUpdate(e, client.client_id)}
+                      className="btn btn-warning"
+                    >
                       Update
                     </button>
                   </td>
                 </tr>
-
               );
             })}
         </tbody>

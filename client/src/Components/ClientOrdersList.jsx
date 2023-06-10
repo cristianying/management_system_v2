@@ -1,10 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const ClientList = ({clientOrders}) => {
+const ClientList = ({ clientOrders }) => {
   // const {clients, setClients } = useContext(RestaurantsContext);
-  let navigate = useNavigate()
-
+  let navigate = useNavigate();
 
   // useEffect(() => {
   //   const fetchData = async () => {
@@ -38,7 +37,7 @@ const ClientList = ({clientOrders}) => {
 
   const handleOrderSelect = async (id) => {
     // console.log('sent id ', id)
-    navigate(`/client_orders/${id}`)
+    navigate(`/client_orders/${id}`);
   };
 
   // console.log("its me mario: ",ClientOrders)
@@ -60,7 +59,10 @@ const ClientList = ({clientOrders}) => {
           {clientOrders &&
             clientOrders.map((orders) => {
               return (
-                <tr onClick={()=>handleOrderSelect(orders.order_id)} key={orders.order_id }> 
+                <tr
+                  onClick={() => handleOrderSelect(orders.order_id)}
+                  key={orders.order_id}
+                >
                   <td>{orders.order_id}</td>
                   <td>{orders.client_name}</td>
                   <td>{orders.created_at}</td>
@@ -74,7 +76,6 @@ const ClientList = ({clientOrders}) => {
                     </button>
                   </td> */}
                 </tr>
-
               );
             })}
         </tbody>

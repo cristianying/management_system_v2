@@ -1,12 +1,11 @@
-import React, { useContext, useState} from "react";
+import React, { useContext, useState } from "react";
 import RestaurantFinder from "../apis/RestaurantFinder";
 import { RestaurantsContext } from "../context/RestaurantsContext";
 
-const AddOrder = ({clients}) => {
+const AddOrder = ({ clients }) => {
   const [clientId, setClientId] = useState("");
   const [name, setName] = useState("");
   const { addClientOrders } = useContext(RestaurantsContext);
-
 
   const handleNameChange = (e) => {
     const selectedClient = clients.find(
@@ -24,7 +23,7 @@ const AddOrder = ({clients}) => {
       const response = await RestaurantFinder.post(
         "/api/v1/client_orders",
         {
-          clientId
+          clientId,
         },
         {
           headers: { token: localStorage.token },
@@ -46,7 +45,8 @@ const AddOrder = ({clients}) => {
               <i className="bi bi-person"></i>
             </span>
 
-            <input list='browsers'
+            <input
+              list="browsers"
               value={name}
               onChange={handleNameChange}
               type="text"
@@ -55,15 +55,14 @@ const AddOrder = ({clients}) => {
             />
             <datalist id="browsers">
               {clients &&
-              clients.map((client) => {
-                return (
-                  <option key={client.client_id} value={client.client_id}>
-                    {client.name}
-                  </option>
-                );
-              })}
+                clients.map((client) => {
+                  return (
+                    <option key={client.client_id} value={client.client_id}>
+                      {client.name}
+                    </option>
+                  );
+                })}
             </datalist>
-            
           </div>
           <div className="col-5 ml-3">
             <button
@@ -75,7 +74,6 @@ const AddOrder = ({clients}) => {
               Add Order
             </button>
           </div>
-
         </div>
       </form>
     </div>

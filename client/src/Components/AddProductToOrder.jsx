@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import RestaurantFinder from "../apis/RestaurantFinder";
 import { useParams } from "react-router-dom";
 
-const AddProduct = ({products}) => {
+const AddProduct = ({ products }) => {
   const { id } = useParams();
 
   const [productId, setProductId] = useState("");
@@ -12,18 +12,18 @@ const AddProduct = ({products}) => {
   const handleSubmitReview = async (e) => {
     e.preventDefault();
     try {
-      await RestaurantFinder.post(`/api/v1/client_order_details/${id}/addProduct`, {
-        product_id: productId,
-        box_quantity: boxQuantity,
-        piece_sell_price: pieceSellPrice,
-      }
-      ,
-      {  
-        headers: {token: localStorage.token},
+      await RestaurantFinder.post(
+        `/api/v1/client_order_details/${id}/addProduct`,
+        {
+          product_id: productId,
+          box_quantity: boxQuantity,
+          piece_sell_price: pieceSellPrice,
+        },
+        {
+          headers: { token: localStorage.token },
         }
       );
 
-      
       window.location.reload();
     } catch (err) {}
   };
@@ -39,12 +39,15 @@ const AddProduct = ({products}) => {
               id="productId"
               className="custom-select"
             >
-              <option value="" disabled>Product Ref ID</option>
+              <option value="" disabled>
+                Product Ref ID
+              </option>
               {products &&
                 products.map((product) => {
                   return (
-                    <option key={product.product_id} value={product.product_id}>{product.product_reference_id}</option>
-
+                    <option key={product.product_id} value={product.product_id}>
+                      {product.product_reference_id}
+                    </option>
                   );
                 })}
             </select>
@@ -72,17 +75,16 @@ const AddProduct = ({products}) => {
             />
           </div>
           <div className="form-group col-12 text-center">
-          <label ></label>
-          <button
-            type="submit"
-            onClick={handleSubmitReview}
-            className="btn btn-primary"
-          >
-            Add Product
-        </button>
+            <label></label>
+            <button
+              type="submit"
+              onClick={handleSubmitReview}
+              className="btn btn-primary"
+            >
+              Add Product
+            </button>
+          </div>
         </div>
-        </div>
-
       </form>
     </div>
   );

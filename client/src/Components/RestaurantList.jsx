@@ -4,43 +4,46 @@ import { RestaurantsContext } from "../context/RestaurantsContext";
 import { useNavigate } from "react-router-dom";
 import StarRating from "./StarRating";
 
-const RestaurantList = ({restaurants}) => {
-  const {setRestaurants } = useContext(RestaurantsContext);
-  let navigate = useNavigate()
+const RestaurantList = ({ restaurants }) => {
+  const { setRestaurants } = useContext(RestaurantsContext);
+  let navigate = useNavigate();
 
-
-//   useEffect(() => {
-//     const fetchData = async () => {
-//         try {
-//           const response = await RestaurantFinder.get("/api/v1/restaurants/");
-//           console.log(response.data.data);
-//           setRestaurants(response.data.data.restaurants);
-//         } catch (err) {}
-//       };
-//     fetchData();
-//   }, []);
+  //   useEffect(() => {
+  //     const fetchData = async () => {
+  //         try {
+  //           const response = await RestaurantFinder.get("/api/v1/restaurants/");
+  //           console.log(response.data.data);
+  //           setRestaurants(response.data.data.restaurants);
+  //         } catch (err) {}
+  //       };
+  //     fetchData();
+  //   }, []);
 
   const handleDelete = async (e, id) => {
-    e.stopPropagation()
+    e.stopPropagation();
     try {
-      const response = await RestaurantFinder.delete(`/api/v1/restaurants/${id}`);
+      const response = await RestaurantFinder.delete(
+        `/api/v1/restaurants/${id}`
+      );
       console.log(response.data.data);
-      setRestaurants(restaurants.filter(restaurant =>{
-        return restaurant.restaurant_id !== id
-      }));
+      setRestaurants(
+        restaurants.filter((restaurant) => {
+          return restaurant.restaurant_id !== id;
+        })
+      );
     } catch (err) {
       console.log(err);
     }
   };
 
   const handleUpdate = async (e, id) => {
-    e.stopPropagation()
-    navigate(`/restaurants/${id}/update`)
+    e.stopPropagation();
+    navigate(`/restaurants/${id}/update`);
   };
 
   const handleRestaurantSelect = async (id) => {
     // console.log('sent id ', restaurants)
-    navigate(`/restaurants/${id}`)
+    navigate(`/restaurants/${id}`);
   };
 
   const renderRating = (restaurant) => {
@@ -73,27 +76,33 @@ const RestaurantList = ({restaurants}) => {
           {restaurants &&
             restaurants.map((restaurant) => {
               return (
-                <tr onClick={()=>handleRestaurantSelect(restaurant.restaurant_id)} key={restaurant.restaurant_id }> 
+                <tr
+                  onClick={() =>
+                    handleRestaurantSelect(restaurant.restaurant_id)
+                  }
+                  key={restaurant.restaurant_id}
+                >
                   <td>{restaurant.name}</td>
                   <td>{restaurant.location}</td>
                   <td>{"$".repeat(restaurant.price_range)}</td>
                   <td>{renderRating(restaurant)}</td>
                   <td>
-                    <button 
-                    onClick={(e) =>handleUpdate(e, restaurant.restaurant_id)}
-                    className="btn btn-warning">
+                    <button
+                      onClick={(e) => handleUpdate(e, restaurant.restaurant_id)}
+                      className="btn btn-warning"
+                    >
                       Update
                     </button>
                   </td>
                   <td>
-                    <button 
-                    onClick={(e) =>handleDelete(e, restaurant.restaurant_id)}
-                    className="btn btn-danger">
+                    <button
+                      onClick={(e) => handleDelete(e, restaurant.restaurant_id)}
+                      className="btn btn-danger"
+                    >
                       Delete
                     </button>
                   </td>
                 </tr>
-
               );
             })}
         </tbody>

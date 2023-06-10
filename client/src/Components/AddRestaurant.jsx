@@ -11,13 +11,15 @@ const AddRestaurant = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await RestaurantFinder.post("/api/v1/restaurants", {
-        name,
-        location,
-        price_range: priceRange,
-      },
-      {  
-        headers: {token: localStorage.token},
+      const response = await RestaurantFinder.post(
+        "/api/v1/restaurants",
+        {
+          name,
+          location,
+          price_range: priceRange,
+        },
+        {
+          headers: { token: localStorage.token },
         }
       );
       // console.log(response.data.data);

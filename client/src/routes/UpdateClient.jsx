@@ -5,7 +5,7 @@ import NavBar from "../Components/NavBar";
 
 const UpdateRestaurant = () => {
   const { id } = useParams();
-  let navigate = useNavigate()
+  let navigate = useNavigate();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -37,7 +37,7 @@ const UpdateRestaurant = () => {
       telephone,
       address,
       country,
-      note
+      note,
     });
     // console.log(updateClient.data.data);
     navigate("/clients");
@@ -45,80 +45,80 @@ const UpdateRestaurant = () => {
 
   return (
     <>
-    <NavBar/>
-    <div className='main'>
-      <h1 className="text-center">Update Client</h1>
-      <form action="">
-        <div className="form-group">
-          <label htmlFor="name">Name</label>
-          <input
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            id="name"
-            className="form-control"
-            type="text"
-          />
-        </div>
+      <NavBar />
+      <div className="main">
+        <h1 className="text-center">Update Client</h1>
+        <form action="">
+          <div className="form-group">
+            <label htmlFor="name">Name</label>
+            <input
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              id="name"
+              className="form-control"
+              type="text"
+            />
+          </div>
 
-        <div className="form-group">
-          <label htmlFor="email">email</label>
-          <input
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            id="email"
-            className="form-control"
-            type="text"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="telephone">telephone</label>
-          <input
-            value={telephone}
-            onChange={(e) => setTelephone(e.target.value)}
-            id="telephone"
-            className="form-control"
-            type="number"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="address">address</label>
-          <input
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            id="address"
-            className="form-control"
-            type="text"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="country">country</label>
-          <input
-            value={country}
-            onChange={(e) => setCountry(e.target.value)}
-            id="country"
-            className="form-control"
-            type="text"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="note">note</label>
-          <input
-            value={note}
-            onChange={(e) => setNote(e.target.value)}
-            id="note"
-            className="form-control"
-            type="text"
-          />
-        </div>
-        <button
-          type="submit"
-          onClick={handleSubmit}
-          className="btn btn-primary"
-        >
-          Submit
-        </button>
-      </form>
-    </div>
+          <div className="form-group">
+            <label htmlFor="email">email</label>
+            <input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              id="email"
+              className="form-control"
+              type="text"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="telephone">telephone</label>
+            <input
+              value={telephone}
+              onChange={(e) => setTelephone(e.target.value)}
+              id="telephone"
+              className="form-control"
+              type="number"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="address">address</label>
+            <input
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              id="address"
+              className="form-control"
+              type="text"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="country">country</label>
+            <input
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
+              id="country"
+              className="form-control"
+              type="text"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="note">note</label>
+            <input
+              value={note}
+              onChange={(e) => setNote(e.target.value)}
+              id="note"
+              className="form-control"
+              type="text"
+            />
+          </div>
+          <button
+            type="submit"
+            onClick={handleSubmit}
+            className="btn btn-primary"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
     </>
   );
 };

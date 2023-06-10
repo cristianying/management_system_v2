@@ -118,7 +118,6 @@ const AddClient = () => {
               Add
             </button>
           </div>
-
         </div>
       </form>
     </div>
